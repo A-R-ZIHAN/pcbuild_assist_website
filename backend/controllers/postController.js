@@ -3,7 +3,8 @@ const mongoose = require('mongoose')
 
 const getAllPosts = async (req,res)=>{
   try{
-    const post = await Post.find({}).sort({createdAt:-1})
+    const userId = req.user._id
+    const post = await Post.find({userId:userId}).sort({createdAt:-1})
     res.status(200).json(post)
   }catch(error){
     res.status(400).json(error)
@@ -22,8 +23,10 @@ const getSinglePost = async (req,res)=>{
 
 const createPost = async (req,res)=>{
   const {description, budget, purpose,answer } = req.body
+  
   try{
-    const post = await Post.create({description,budget,purpose,answer})
+    const userId = req.user._id
+    const post = await Post.create({description,budget,purpose,answer,userId})
     res.status(200).json(post)
   }catch(error){
     res.status(400).json(error.message)

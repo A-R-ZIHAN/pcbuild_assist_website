@@ -16,6 +16,10 @@ const postSchema = new Schema({
   },
   answer:{
     type:String,
+  },
+  userId:{
+    type:String,
+    required: true 
   }
 
 }, {timestamps:true})

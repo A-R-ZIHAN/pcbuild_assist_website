@@ -23,17 +23,16 @@ const Navbar = ()=>{
               <li><h4><Link to={'/signup'}>Sign up</Link></h4></li>
             </>
           )}
+
+            <li><Link to={'/'}>ALL</Link></li>
+            <li><Link to={'/completed'}>COMPLETED</Link></li>
+            <li><Link to={'/incomplete'}>INCOMPLETE</Link></li>
             
 
           
           </ul>
-          <div id="left-sidebar">
-            <ul>
-            <li><Link to={'/'}>ALL</Link></li>
-            <li><Link to={'/completed'}>COMPLETED</Link></li>
-            <li><Link to={'/incomplete'}>INCOMPLETE</Link></li>
-           </ul>
-          </div>
+            
+
     </nav>
   )
 }
