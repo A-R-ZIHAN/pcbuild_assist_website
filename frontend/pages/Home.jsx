@@ -113,3 +113,40 @@ export const Completed = ()=>{
   </>
   )
 }
+
+export const Admin = ()=>{
+  const {posts,dispatch} = usePostsContext()
+  const {user} = useAuthContext()
+  useEffect(()=>{
+    
+    const fetchPost = async ()=>{
+
+        const response = await fetch('http://localhost:4000/api/posts/admin',{
+          headers: {'Authorization': `Bearer ${user.token}`}
+        })
+        const json = await response.json()
+        if(response.ok){
+          dispatch({type:"SET_POSTS",payload:json})
+          
+        }
+       
+    }
+    if(user.isAdmin){
+      fetchPost()
+    }
+      
+    
+    
+  },[dispatch,user])
+  return(
+    <>  
+    
+    <div className="grid-container">
+      {posts && posts.map((post)=>(
+         <Posts key={post._id} post={post}/>
+        
+       ))}
+    </div>
+  </>
+  )
+}

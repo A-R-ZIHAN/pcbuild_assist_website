@@ -1,9 +1,10 @@
 import { useEffect,useState } from "react"
 import {useLocation} from 'react-router-dom'
 import { useAuthContext } from "../hooks/useAuthContext"
+import { usePostsContext } from "../hooks/usePostContext"
 
 const AnswerPosts = ()=>{
-  const [posts,setPosts] = useState(null)
+  const [post,setPost] = useState(null)
   const location = useLocation()
   const id = location.pathname.split("/").pop()
   const {user} = useAuthContext()
@@ -15,25 +16,28 @@ const AnswerPosts = ()=>{
       })
         const json = await response.json()
         if(response.ok){
-          setPosts(json)
+          
+         setPost(json)
         }
     }
 
-    fetchPost()
-  },[])
+    if (user) {
+      fetchPost()
+    }
+  },[user])
   return(
     <>
-     {posts && posts.map((post)=>(
+     {post && 
       <>
-      <div >
-        <h1 key={post._id}>Description: {post.description}</h1>
+      <div key={post._id}>
+        <h1>Description: {post.description}</h1>
         <h4>Purpose: {post.purpose}</h4>
         <h4>Budget: {post.budget}</h4>
         <h1>Answer: {post.answer}</h1>
       </div>
         
       </>
-     ))}
+     }
     </>
   )
 }

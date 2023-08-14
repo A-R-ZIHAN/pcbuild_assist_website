@@ -10,6 +10,14 @@ const getAllPosts = async (req,res)=>{
     res.status(400).json(error)
   }
 }
+const getAllPostsAdmin = async (req,res)=>{
+  try{
+    const post = await Post.find({}).sort({createdAt:-1})
+    res.status(200).json(post)
+  }catch(error){
+    res.status(400).json(error)
+  }
+}
 
 const getSinglePost = async (req,res)=>{
   const { id } = req.params
@@ -73,5 +81,6 @@ module.exports = {
   getSinglePost,
   createPost,
   deletePost,
-  updatePost
+  updatePost,
+  getAllPostsAdmin
 }

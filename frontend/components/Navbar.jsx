@@ -23,6 +23,7 @@ const Navbar = ()=>{
              <NavLink to={'/'}>ALL</NavLink>
              <NavLink to={'/completed'}>COMPLETED</NavLink>
              <NavLink to={'/incomplete'}>INCOMPLETE</NavLink>
+            {user.isAdmin && (<NavLink to={'/admin'}>ADMIN</NavLink>)} 
              <button onClick={handleClick}>Logout</button>
             </>
           )}

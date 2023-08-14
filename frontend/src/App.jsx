@@ -1,7 +1,7 @@
 import Navbar from "../components/Navbar";
 
 import {Routes,Route,Navigate} from 'react-router-dom';
-import {Home,Completed,Incomplete} from '../pages/Home'
+import {Home,Completed,Incomplete, Admin} from '../pages/Home'
 
 
 import CreatePost from "../pages/CreatePost";
@@ -22,6 +22,10 @@ function App() {
         <Route 
           path='/' 
           element={user ? <Home/> :  <Navigate to="/login"/>}
+        />
+        <Route 
+          path='/admin' 
+          element={user ? <Admin/> :  <Navigate to="/login"/>}
         />
         <Route 
           path='/completed' 

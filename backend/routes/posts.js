@@ -2,12 +2,14 @@ const express = require('express')
 const router = express.Router()
 const Post = require('../models/PostModel')
 const mongoose = require('mongoose')
-const {getAllPosts,getSinglePost, createPost, deletePost, updatePost} = require('../controllers/postController')
+const {getAllPosts,getSinglePost, createPost, deletePost, updatePost,getAllPostsAdmin} = require('../controllers/postController')
 const requireAuth = require('../middlewares/requireAuth')
 
 router.use(requireAuth)
 
 router.get('/',getAllPosts)
+
+router.get('/admin',getAllPostsAdmin)
 
 
 router.get('/:id',getSinglePost)
