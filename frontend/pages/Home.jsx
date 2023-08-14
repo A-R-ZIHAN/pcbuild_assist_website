@@ -27,12 +27,11 @@ const Home = ()=>{
   },[dispatch,user])
   return(
     <>  
-    <div id="container">
-    <div id="main-content">
+    <div className="grid-container">
+    
       {posts && posts.map((post)=>(
         <Posts key={post._id} post={post}/>
      ))}
-     </div>
     </div>
    
       

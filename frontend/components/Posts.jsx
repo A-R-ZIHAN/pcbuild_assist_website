@@ -20,8 +20,8 @@ const Posts = ({post})=>{
   return(
   
   <div id="post">
-        <button onClick={handleClick}>Delete</button>
-        <h1>Budget: {post.budget} taka</h1>
+        
+        <h1>{post.budget}</h1>
         <h3>{post.description}</h3>
         <p>Purpose: {post.purpose}</p>
         <p style={{color:post.answer ? 'green' : 'red'}}>Status: {post.answer ? 'Completed' : 'Incomplete'}</p>
@@ -29,10 +29,11 @@ const Posts = ({post})=>{
             <Link to={`/post/${post._id}`}>
             View Answer
             </Link>
-          </button>
-          <button style={{display:post.answer?'none':'', color:'red'}}>
+        </button>
+        <button style={{display:post.answer?'none':'', color:'red'}}>
                <Link  to={`/post?id=${post._id}`}> Answer </Link> 
-          </button>
+        </button>
+        <button id='postDeleteBtn' onClick={handleClick}>Delete</button>
 
 
      
