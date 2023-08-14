@@ -82,15 +82,16 @@ const CreatePost = ()=>{
   }
   return(
     <>
-      <form id="createPostForm" action={id?"/completed":"/incomplete" } onSubmit={id?updatePost:handleSubmit}>
-        <label>Description: </label>
+    <div className="postContainer">
+    <form id="createPostForm" action={id?"/completed":"/incomplete" } onSubmit={id?updatePost:handleSubmit}>
+        <label>Description: </label> <br />
         <input 
         type="text" 
         onChange={e=>setDescription(e.target.value)}
         value={id&&post?post.description:description}
         /> <br />
 
-        <label>Budget: </label>
+        <label>Budget: </label> <br />
         <select 
           onChange={e=>setBudget(e.target.value)}
           value={id&&post?post.budget:budget}
@@ -101,7 +102,7 @@ const CreatePost = ()=>{
           <option value="40000">40k</option>
         </select><br />
 
-        <label>Purpose: </label>
+        <label>Purpose: </label> <br />
         <input 
           value={id&&post?post.purpose:purpose}
           type="text" 
@@ -115,8 +116,11 @@ const CreatePost = ()=>{
           value={answer}
           onChange={e=>setAnswer(e.target.value)}
         />
+        
         <button>Submit</button>
       </form>
+    </div>
+      
     </>
   )
 }
