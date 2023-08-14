@@ -1,8 +1,9 @@
 import Navbar from "../components/Navbar";
-import Home from "../pages/Home";
+
 import {Routes,Route,Navigate} from 'react-router-dom';
-import Completed from '../pages/Completed'
-import Incomplete from '../pages/Incomplete'
+import {Home,Completed,Incomplete} from '../pages/Home'
+
+
 import CreatePost from "../pages/CreatePost";
 import AnswerPosts from "../pages/AnswerPosts";
 import Login from "../pages/Login";
