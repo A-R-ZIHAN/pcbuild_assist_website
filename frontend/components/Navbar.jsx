@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLogout } from '../hooks/useLogout';
 
@@ -10,30 +10,38 @@ const Navbar = ()=>{
   }
 
   return(
+    <header className='header'>
+    <NavLink className='logo' to={'/'}>BUILD ASSIST</NavLink>  
+   
     <nav id="nav">
-          <h1>BUILD ASSIST</h1>
-          <ul>
-            <li><h4><Link to={'/post'}>Create Post</Link></h4></li>
+          
+
+            
           {user && (
-              <li><h4><button onClick={handleClick}>Logout</button></h4></li>
+            <>
+             <NavLink to={'/post'}>Create Post</NavLink>
+             <NavLink to={'/'}>ALL</NavLink>
+             <NavLink to={'/completed'}>COMPLETED</NavLink>
+             <NavLink to={'/incomplete'}>INCOMPLETE</NavLink>
+             <button onClick={handleClick}>Logout</button>
+            </>
           )}
           {!user && (
             <>
-              <li><h4><Link to={'/login'}>Login</Link></h4></li>
-              <li><h4><Link to={'/signup'}>Sign up</Link></h4></li>
+              <NavLink to={'/login'}>Login</NavLink>
+              <NavLink to={'/signup'}>Sign up</NavLink>
             </>
           )}
 
-            <li><Link to={'/'}>ALL</Link></li>
-            <li><Link to={'/completed'}>COMPLETED</Link></li>
-            <li><Link to={'/incomplete'}>INCOMPLETE</Link></li>
+            
             
 
           
-          </ul>
+ 
             
 
     </nav>
+    </header>
   )
 }
 
